@@ -14,6 +14,8 @@ class ItemStockController extends Controller
     {
         $items = ItemModel::get();
         $data = [
+            'id_barang' => null,
+            'periode' => date("Y-m"),
             'is_data' => false,
             'items' => $items
         ];
@@ -26,9 +28,9 @@ class ItemStockController extends Controller
 
         $validate = Validator::make($request->all(), [
             'barang' => 'required',
-            'tanggal_mulai' => 'required',
-            'tanggal_akhir' => 'required',
+            'periode' => 'required',
         ]);
+
 
         if ($request->tanggal_mulai > $request->tanggal_akhir) {
             return redirect("/admin/stok-barang")->with([
@@ -42,15 +44,19 @@ class ItemStockController extends Controller
             ]);
         }
 
+        $tanggal_mulai = $request->periode . "-1";
+        $tanggal_akhir = date("Y-m-t", strtotime($tanggal_mulai));
+
         $barang = ItemModel::find($request->barang);
         $distribusi_barang = ItemDistribution::where([
             'id_barang' => $request->barang,
-        ])->whereBetween('created_at', [$request->tanggal_mulai, $request->tanggal_akhir,])->get();
+        ])->whereBetween('created_at', [$tanggal_mulai, $tanggal_akhir,])->get();
 
         $items = ItemModel::get();
 
         $data = [
             'id_barang' => $request->barang,
+            'periode' => $request->periode,
             'items' => $items,
             'is_data' => true,
             'barang' => $barang,

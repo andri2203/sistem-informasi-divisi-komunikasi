@@ -68,7 +68,19 @@
                     <img src="/images/PUSHUB_AD.png" alt="Logo PUSHUB TNI AD" class="image-brand me-2">
                     Sistem Informasi Divisi Komunikasi
                 </header>
-                <span class="fst-italic fw-semibold">Selamat Datang, {{ auth()->user()->name }}</span>
+                <div class="dropdown d-flex align-items-center">
+                    <a class="btn btn-white btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Selamat Datang, {{ auth()->user()->name }}
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/admin/ganti-password">Ganti Password</a></li>
+                        <form action="/auth/logout" method="post">
+                            @csrf
+                            <li><button class="dropdown-item" type="submit">Keluar</button></li>
+                        </form>
+                    </ul>
+                </div>
             </nav>
             <section class="page container-fluid">
                 @yield("adminContent")
@@ -79,7 +91,7 @@
         </div>
     </main>
 
-    <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="/fontawesome/js/all.min.js"></script>
 </body>
 

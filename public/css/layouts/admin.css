@@ -114,6 +114,7 @@ nav.main-nav {
     padding: 0 10px;
     margin-bottom: 24px;
     background-color: #ffffff;
+    z-index: 999;
 }
 
 nav.main-nav > header.brand {

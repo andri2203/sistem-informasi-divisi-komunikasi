@@ -29,7 +29,7 @@ Route::prefix("auth")->group(function () {
     // View
     Route::get("/login", [AuthController::class, "login"])->middleware('guest');
     Route::get("/register", [AuthController::class, "register"])->middleware('guest');
-    Route::get("/logout", [AuthController::class, "logout"])->middleware('auth');
+    Route::post("/logout", [AuthController::class, "logout"])->middleware('auth');
 
     // Logic
 });

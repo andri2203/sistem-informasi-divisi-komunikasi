@@ -33,19 +33,15 @@
         @csrf
         <div class="col-auto">
             <label for="barang" class="visually-hidden">Barang</label>
-            <select name="barang" id="barang" class="form-select" required>
+            <select name="barang" id="barang" class="form-select">
                 <option value="">-- Pilih Barang --</option>
-                @foreach($items as $item) <option value="{{ old('barang',$item->id) }}">{{ $item->nm_barang }}</option>
+                @foreach($items as $item) <option @if($id_barang && $id_barang==$item->id || old('barang') == $item->id) selected @endif value="{{ $item->id }}">{{ $item->nm_barang }}</option>
                 @endforeach
             </select>
         </div>
         <div class="col-auto">
-            <label for="tanggal_mulai" class="visually-hidden">Tanggal Awal</label>
-            <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai">
-        </div>
-        <div class="col-auto">
-            <label for="tanggal_akhir" class="visually-hidden">Tanggal Akhir</label>
-            <input type="date" class="form-control" id="tanggal_akhir" name="tanggal_akhir">
+            <label for="periode" class="visually-hidden">Periode</label>
+            <input type="month" class="form-control" id="periode" name="periode" value="{{ old('periode', $periode) }}">
         </div>
         <div class="col-auto">
             <button type="submit" class="btn btn-primary mb-3">Lihat</button>
