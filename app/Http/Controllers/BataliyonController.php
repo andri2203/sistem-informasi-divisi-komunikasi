@@ -8,7 +8,7 @@ class BataliyonController extends Controller
 {
     public function index()
     {
-        # code...
+        return view("layouts.bataliyon");
     }
 
     public function upload_file()

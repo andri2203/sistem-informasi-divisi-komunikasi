@@ -38,9 +38,6 @@
                             <i class="fa-solid fa-angle-right me-2 icon"></i><a href="/admin/barang-keluar" class="menu-link">Barang Keluar</a>
                         </li>
                         <li class="nav-submenu">
-                            <i class="fa-solid fa-angle-right me-2 icon"></i><a href="/admin/stok-barang" class="menu-link">Stok Barang</a>
-                        </li>
-                        <li class="nav-submenu">
                             <i class="fa-solid fa-angle-right me-2 icon"></i><a href="/admin/pegawai" class="menu-link">Pegawai</a>
                         </li>
                     </ul>
@@ -52,13 +49,11 @@
                             <i class="fa-solid fa-angle-right me-2 icon"></i>
                             <a href="/admin/laporan" class="menu-link">Laporan Perbulan</a>
                         </li>
+                        <li class="nav-submenu">
+                            <i class="fa-solid fa-angle-right me-2 icon"></i>
+                            <a href="/admin/stok-barang" class="menu-link">Laporan Stok Barang</a>
+                        </li>
                     </ul>
-                </li>
-                <li class="nav-menu single">
-                    <i class="fa-solid fa-lock me-2 icon"></i><a href="/admin/ganti-password" class="menu-link">Ganti Password</a>
-                </li>
-                <li class="nav-menu single">
-                    <i class="fa-solid fa-sign-out me-2 icon"></i><a href="/auth/logout" class="menu-link">Keluar</a>
                 </li>
             </ul>
         </aside>

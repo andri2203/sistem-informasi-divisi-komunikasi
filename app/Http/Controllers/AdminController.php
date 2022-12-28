@@ -158,7 +158,6 @@ class AdminController extends Controller
                 'Laporan Barang Masuk',
                 'Laporan Barang Keluar',
                 'Laporan Servis Barang',
-                'Laporan Stok Barang',
             ],
             'id_laporan' => null,
             'id_bulan' => null,
@@ -188,6 +187,31 @@ class AdminController extends Controller
         }
 
         return view("admin.laporan", $data);
+    }
+
+    public function cetakLaporanBulanan($id_laporan, $id_bulan, $id_tahun)
+    {
+        $bulan = [
+            'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember',
+        ];
+
+        $laporan = [
+            'Laporan Barang Masuk',
+            'Laporan Barang Keluar',
+            'Laporan Servis Barang',
+        ];
+
+        $pimpinan = Employee::where('pimpinan', '1')->orderBy('created_at', 'desc')->first();
+
+        $data = [
+            'bulan' => $bulan,
+            'showTables' => false,
+            'title' => $laporan[$id_laporan],
+            'data' => $this->generateReport($id_laporan, $id_bulan, $id_tahun),
+            'pimpinan' => $pimpinan,
+        ];
+
+        return view("admin.laporan-cetak", $data);
     }
 
     protected function generateReport($laporan, $bulan, $tahun)
@@ -310,48 +334,6 @@ class AdminController extends Controller
                         'Rp.' . number_format($d->harga_servis, 2, ',', '.'),
                         $d->keterangan,
                         ["/admin/servis-barang/$d->id", "/admin/servis-barang/hapus/$d->id"],
-                    ];
-
-                    array_push($data['body'], $row);
-                }
-
-                return $data;
-                break;
-            case '3': // Laporan Stok Barang
-                $dataStokBarang = ItemStock::join('items', 'items.id', '=', 'item_stocks.id_barang')
-                    ->whereBetween('item_stocks.created_at', [$fromDate, $toDate])
-                    ->get([
-                        'item_stocks.*',
-                        'items.kd_barang',
-                        'items.nm_barang',
-                        'items.mrk_barang',
-                        'items.tahun_barang',
-                    ]);
-                $data = [
-                    'head' => [
-                        'Kode Barang',
-                        "Nama Barang",
-                        "Merek",
-                        "Tahun",
-                        "Stok Barang",
-                        "Barang Bagus",
-                        "Barang Tidak bagus",
-                        "Keterangan"
-                    ],
-                    'body' => [],
-                ];
-
-                foreach ($dataStokBarang as $d) {
-                    $row = [
-                        $d->kd_barang,
-                        $d->nm_barang,
-                        $d->mrk_barang,
-                        $d->tahun_barang,
-                        $d->stock_barang,
-                        $d->jumlah_barang_bagus,
-                        $d->jumlah_barang_tidak_bagus,
-                        $d->keterangan,
-                        ["/admin/stok-barang/$d->id", "/admin/stok-barang/hapus/$d->id"],
                     ];
 
                     array_push($data['body'], $row);

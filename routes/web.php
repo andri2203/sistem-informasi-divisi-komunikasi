@@ -27,15 +27,17 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::prefix("auth")->group(function () {
     // View
-    Route::get("/login", [AuthController::class, "login"])->middleware('guest');
-    Route::get("/register", [AuthController::class, "register"])->middleware('guest');
+    Route::get("/login", [AuthController::class, "loginForm"])->middleware('guest');
+    Route::get("/register", [AuthController::class, "registrasiForm"])->middleware('guest');
     Route::post("/logout", [AuthController::class, "logout"])->middleware('auth');
 
+    Route::post("/login", [AuthController::class, "login"])->middleware('guest');
+    Route::post("/register", [AuthController::class, "register"])->middleware('guest');
     // Logic
 });
 
 Route::prefix('admin')->group(function () {
-    Route::middleware('auth')->group(function () {
+    Route::middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/', [AdminController::class, 'index']);
 
         Route::get('/barang', [AdminController::class, 'barang']);
@@ -52,14 +54,17 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/stok-barang', [ItemStockController::class, 'index']);
         Route::post('/stok-barang', [ItemStockController::class, 'store']);
+        Route::get('/stok-barang/{id}/{periode}/cetak', [ItemStockController::class, 'cetak']);
 
         Route::get('/pegawai', [AdminController::class, 'pegawai']);
         Route::get('/pegawai/{id}', [AdminController::class, 'pegawai']);
 
         Route::get('/laporan', [AdminController::class, 'laporan']);
         Route::post('/laporan', [AdminController::class, 'laporan']);
+        Route::get('/laporan/{id_laporan}/{id_bulan}/{id_tahun}/cetak', [AdminController::class, 'cetakLaporanBulanan']);
 
         Route::get('/ganti-password', [AdminController::class, 'gantiPassword']);
+        Route::post('/ganti-password', [AuthController::class, 'changePassword']);
 
         Route::post('/barang', [BarangController::class, 'tambahBarang']);
         Route::post('/barang/{id}', [BarangController::class, 'ubahBarang']);
@@ -90,10 +95,7 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::prefix('bataliyon')->group(function () {
-    // View
     Route::get('/', [BataliyonController::class, 'index']);
     Route::get('/upload-file', [BataliyonController::class, 'upload_file']);
     Route::get('/informasi', [BataliyonController::class, 'informasi']);
-
-    // Logic
 });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\ItemDistribution;
 use App\Models\ItemModel;
 use App\Models\ItemStock;
@@ -64,5 +65,30 @@ class ItemStockController extends Controller
         ];
 
         return view("admin.stok-barang", $data);
+    }
+
+    public function cetak($id, $periode)
+    {
+        $tanggal_mulai = $periode . "-1";
+        $tanggal_akhir = date("Y-m-t", strtotime($tanggal_mulai));
+
+        $barang = ItemModel::find($id);
+        $distribusi_barang = ItemDistribution::where([
+            'id_barang' => $id,
+        ])->whereBetween('created_at', [$tanggal_mulai, $tanggal_akhir,])->get();
+
+        $items = ItemModel::get();
+        $pimpinan = Employee::where('pimpinan', '1')->orderBy('created_at', 'desc')->first();
+
+        $data = [
+            'items' => $items,
+            'is_data' => true,
+            'barang' => $barang,
+            'distribusi' => $distribusi_barang,
+            'title' => 'Laporan Stok Barang',
+            'pimpinan' => $pimpinan
+        ];
+
+        return view("admin.stok-barang-cetak", $data);
     }
 }

@@ -62,6 +62,11 @@
                 <div class="col-auto">
                     <button type="submit" class="btn btn-primary mb-3">Lihat Laporan</button>
                 </div>
+                @if($showTables)
+                <div class="col-auto">
+                    <a href="/admin/laporan/{{ $id_laporan }}/{{ $id_bulan }}/{{ $id_tahun }}/cetak" target="_blank" class="btn btn-warning mb-3">Cetak</a>
+                </div>
+                @endif
             </form>
         </div>
         @if($showTables)

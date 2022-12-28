@@ -46,32 +46,37 @@
         <div class="col-auto">
             <button type="submit" class="btn btn-primary mb-3">Lihat</button>
         </div>
+        @if($is_data)
+        <div class="col-auto">
+            <a href="/admin/stok-barang/{{ $barang->id }}/{{ $periode }}/cetak" target="_blank" class="btn btn-warning mb-3">Cetak</a>
+        </div>
+        @endif
     </form>
     @if($is_data)
     <div class="w-100 mt-2 mb-2">
         <div class="row mb-1">
             <div class="col-sm-2">Kode Barang</div>
-            <div class="col"> : {{ $barang->kd_barang }}</div>
+            <div class="col-sm-10"> : {{ $barang->kd_barang }}</div>
         </div>
         <div class="row mb-1">
             <div class="col-sm-2">Nama Barang</div>
-            <div class="col"> : {{ $barang->nm_barang }}</div>
+            <div class="col-sm-10"> : {{ $barang->nm_barang }}</div>
         </div>
         <div class="row mb-1">
             <div class="col-sm-2">Merek Barang</div>
-            <div class="col"> : {{ $barang->mrk_barang }}</div>
+            <div class="col-sm-10"> : {{ $barang->mrk_barang }}</div>
         </div>
         <div class="row mb-1">
             <div class="col-sm-2">Tahun Barang</div>
-            <div class="col"> : {{ $barang->tahun_barang }}</div>
+            <div class="col-sm-10"> : {{ $barang->tahun_barang }}</div>
         </div>
         <div class="row mb-1">
             <div class="col-sm-2">Jumlah Awal</div>
-            <div class="col"> : {{ $barang->jml_barang }}</div>
+            <div class="col-sm-10"> : {{ $barang->jml_barang }}</div>
         </div>
         <div class="row mb-1">
             <div class="col-sm-2">Keterangan</div>
-            <div class="col"> : {{ $barang->keterangan }}</div>
+            <div class="col-sm-10"> : {{ $barang->keterangan }}</div>
         </div>
     </div>
     @endif

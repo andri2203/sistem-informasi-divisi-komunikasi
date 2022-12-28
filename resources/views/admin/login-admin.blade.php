@@ -24,6 +24,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
+            @if(session()->has('success'))
+            <div class="w-100 alert alert-sucess alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
             <form class="w-100" action="/admin/login" method="POST">
                 @csrf
                 <div class="mb-3">
