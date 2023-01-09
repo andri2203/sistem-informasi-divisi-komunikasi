@@ -1,6 +1,6 @@
-@extends("layouts.admin")
+@extends("layouts.dashboard")
 
-@section("adminContent")
+@section("dashboard")
 <h3 class="text-bold text-center mb-4">Barang Masuk</h3>
 
 @if(session()->has('success'))
@@ -29,7 +29,7 @@
 @endif
 
 <div class="d-flex justify-content-center">
-    <form action="/admin/barang-masuk/{{ $id_distribusi_barang??'' }}" method="POST" class="w-75">
+    <form action="/admin/barang-masuk{{ $id_distribusi_barang?'/'.id_distribusi_barang:'' }}" method="POST" class="w-75">
         @csrf
         <div class="row mb-3">
             <label for="kodeBarang" class="col-sm-2 col-form-label">Barang</label>
@@ -48,6 +48,16 @@
             <label for="kondisiBarang" class="col-sm-2 col-form-label">Kondisi Barang</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="kondisiBarang" name="kondisi_barang" placeholder="Kondisi Barang" required value="@if($distribusiBarang !=null){{ old('kondisi_barang', $distribusiBarang->kondisi_barang) }}@endif">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="divisi" class="col-form-label col-sm-2">Divisi</label>
+            <div class="col-sm-10">
+                <select name="divisi" id="divisi" class="form-select">
+                    @foreach($divisi as $d)
+                    <option value="{{ $d->id }}">{{ $d->name }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="row mb-3">

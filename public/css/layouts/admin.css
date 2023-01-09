@@ -20,7 +20,7 @@ aside.sidebar-main {
     color: white;
 }
 
-aside.sidebar-main > header.brand {
+aside.sidebar-main header.brand {
     width: 100%;
     height: 40px;
     margin-bottom: 30px;
@@ -31,69 +31,83 @@ aside.sidebar-main > header.brand {
     justify-content: center;
 }
 
-aside.sidebar-main > ul.sidebar-nav,
-li.nav-menu > ul.nav-sub {
+aside.sidebar-main ul.sidebar-nav,
+li.nav-menu ul.nav-sub {
     list-style-type: none;
     padding: 0;
 }
 
-aside.sidebar-main > ul.sidebar-nav a {
+li.nav-menu ul.nav-sub {
+    overflow: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
+    max-height: 0;
+    transition: all 0.26s ease-out;
+}
+
+li.nav-menu.open ul.nav-sub {
+    transform: scaleY(1);
+    max-height: 300px;
+    transition: all 0.26s ease-in;
+}
+
+aside.sidebar-main ul.sidebar-nav a {
     color: var(--bs-gray-300);
     text-decoration: none;
     font-size: 1rem;
     transition: all 0.3s ease-in;
 }
 
-aside.sidebar-main > ul.sidebar-nav .icon {
+aside.sidebar-main ul.sidebar-nav .icon {
     width: 16px;
     color: var(--bs-gray-300);
 }
 
-ul.sidebar-nav > li.nav-menu {
+ul.sidebar-nav li.nav-menu {
     line-height: 40px;
     margin-bottom: 0.7rem;
     padding-left: 10px;
     transition: all 0.3s ease-in;
 }
 
-ul.sidebar-nav > li.nav-menu.single:hover,
-ul.nav-sub > li.nav-submenu:hover {
+ul.sidebar-nav li.nav-menu.single:hover,
+ul.nav-sub li.nav-submenu:hover {
     background-color: var(--bs-link-hover-color);
     cursor: pointer;
 }
 
-ul.sidebar-nav > li.nav-menu.single:hover {
+ul.sidebar-nav li.nav-menu.single:hover {
     padding-left: 15px;
 }
 
-ul.nav-sub > li.nav-submenu:hover {
+ul.nav-sub li.nav-submenu:hover {
     border-radius: 10px 0 0 10px;
     padding-left: 20px;
 }
 
-ul.sidebar-nav > li.nav-menu.single:hover a,
-ul.sidebar-nav > li.nav-menu.single:hover .icon,
-ul.nav-sub > li.nav-submenu:hover a,
-ul.nav-sub > li.nav-submenu:hover .icon {
+ul.sidebar-nav li.nav-menu.single:hover a,
+ul.sidebar-nav li.nav-menu.single:hover .icon,
+ul.nav-sub li.nav-submenu:hover a,
+ul.nav-sub li.nav-submenu:hover .icon {
     color: #ffffff;
 }
 
-ul.sidebar-nav > li.nav-menu.main {
+ul.sidebar-nav li.nav-menu.main {
     color: var(--bs-gray-300);
 }
 
-li.nav-menu > a.menu-link {
+li.nav-menu a.menu-link {
     min-width: 100%;
 }
 
-ul.nav-sub > li.nav-submenu {
+ul.nav-sub li.nav-submenu {
     line-height: 40px;
     padding-left: 15px;
     border-radius: 0;
     transition: all 0.3s ease-in;
 }
 
-header.brand > span.title-brand {
+header.brand span.title-brand {
     margin-bottom: 0;
 }
 
@@ -117,7 +131,7 @@ nav.main-nav {
     z-index: 999;
 }
 
-nav.main-nav > header.brand {
+nav.main-nav header.brand {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,11 +140,11 @@ nav.main-nav > header.brand {
     font-size: 1.25rem;
 }
 
-header.brand > img.image-brand {
+header.brand img.image-brand {
     max-height: 25px;
 }
 
-nav.main-nav > button.btn.user-info {
+nav.main-nav button.btn.user-info {
     --bs-btn-color: #000;
     --bs-btn-bg: #ffffff;
     --bs-btn-border-color: #ffffff;
@@ -148,12 +162,12 @@ nav.main-nav > button.btn.user-info {
     --bs-btn-border-radius: 1rem;
 }
 
-div.content > section.page {
+div.content section.page {
     padding: 0 calc(30px - (var(--bs-gutter-x) * 0.5));
     min-height: calc(100vh - 122px);
 }
 
-div.content > footer.content-footer {
+div.content footer.content-footer {
     margin-top: 16px;
     display: flex;
     line-height: 40px;
@@ -170,6 +184,6 @@ section.login {
     height: max-content;
 }
 
-section.login > header > img {
+section.login header img {
     width: calc(25vw * 0.3);
 }

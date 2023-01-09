@@ -1,6 +1,6 @@
-@extends("layouts.admin")
+@extends("layouts.dashboard")
 
-@section("adminContent")
+@section("dashboard")
 <h3 class="fw-bold text-center mb-4">Stok Barang</h3>
 
 @if(session()->has('success'))

@@ -10,7 +10,7 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100 justify-content-center align-items-center bg-light">
-    <form action="{{ $action }}" method="POST" style="min-width: 30vw;">
+    <form action="{{ $action }}" method="POST" style="--width-section:30vw; min-width: var(--width-section);" class="my-3">
         @if(session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}

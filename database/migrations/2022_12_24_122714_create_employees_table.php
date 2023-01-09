@@ -15,7 +15,6 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user')->nullable();
             $table->string('nip');
             $table->string('nama');
             $table->enum('jk', ['Laki - Laki', 'Perempuan']);
@@ -23,7 +22,9 @@ class CreateEmployeesTable extends Migration
             $table->string('status');
             $table->string('gol');
             $table->string('alamat');
+            $table->integer('divisi')->default(1);
             $table->integer('pimpinan')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

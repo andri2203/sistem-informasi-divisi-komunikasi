@@ -20,6 +20,10 @@
     background-color: #e5d9b6;
 }
 
+.bg-own-2 {
+    background: #ece5d1;
+}
+
 .bg-own-green {
     background-color: #285430;
 }
@@ -58,7 +62,14 @@
     --bs-gradient: none;
 }
 
-section#home {
-    background-image: url("/images/bg.jpg");
-    filter: brightness(0.3);
+.text-own {
+    color: #285430;
+}
+
+.text-own-2 {
+    color: #538342;
+}
+
+.text-own-3 {
+    color: #5f8d4e;
 }

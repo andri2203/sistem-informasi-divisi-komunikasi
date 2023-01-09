@@ -1,6 +1,6 @@
-@extends("layouts.admin")
+@extends("layouts.dashboard")
 
-@section("adminContent")
+@section("dashboard")
 <h3 class="text-bold text-center mb-4">Data Barang</h3>
 
 @if(session()->has('success'))
@@ -29,7 +29,7 @@
 @endif
 
 <div class="d-flex align-items-center flex-column">
-    <form action="/admin/barang/{{ $id_barang??'' }}" method="POST" class="w-75 mb-4">
+    <form action="/admin/barang{{ $id_barang?'/'.$id_barang:'' }}" method="POST" class="w-75 mb-4">
         @csrf
         <div class="row mb-3">
             <label for="kodeBarang" class="col-sm-2 col-form-label">Kode Barang</label>

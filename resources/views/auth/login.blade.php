@@ -2,12 +2,12 @@
 
 @section("auth")
 <div class="mb-3">
-    <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" aria-describedby="emailHelp" required autofocus>
-    @error('email')
-    <div id="emailInvalid" class="invalid-feedback">{{ $message }}</div>
+    <label for="username" class="form-label">Username</label>
+    <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" required autofocus>
+    @error('username')
+    <div id="usernameInvalid" class="invalid-feedback">{{ $message }}</div>
     @else
-    <div id="emailHelp" class="form-text">Masukkan Email anda</div>
+    <div id="usernameHelp" class="form-text">Masukkan Username anda</div>
     @enderror
 </div>
 <div class="mb-3">

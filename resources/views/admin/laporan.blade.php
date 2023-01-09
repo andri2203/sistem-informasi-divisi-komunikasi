@@ -1,6 +1,6 @@
-@extends("layouts.admin")
+@extends("layouts.dashboard")
 
-@section("adminContent")
+@section("dashboard")
 <h3 class="text-bold text-center mb-4">Laporan Perbulan</h3>
 
 @if(session()->has('success'))

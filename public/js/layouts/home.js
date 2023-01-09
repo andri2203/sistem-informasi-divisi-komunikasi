@@ -1,4 +1,5 @@
 const navbar = document.getElementById("navbar");
+const btnOwnJs = document.querySelector(".btn-own-js");
 const btnLOgin = document.getElementById("btn-login");
 const btnRegister = document.getElementById("btn-register");
 const links = document.getElementsByClassName("scroll");
@@ -6,31 +7,11 @@ const sections = document.getElementsByClassName("scroll-targets");
 
 function handleNavbar(scroll) {
     if (scroll >= 60) {
-        navbar.classList.remove(
-            "bg-transparent",
-            "px-5",
-            "py-3",
-            "navbar-own-dark"
-        );
-        navbar.classList.add("bg-own", "px-4", "shadow-sm", "navbar-own");
-
-        btnLOgin.classList.remove("btn-outline-own-2");
-        btnLOgin.classList.add("btn-outline-own");
-        btnRegister.classList.remove("btn-outline-own-2");
-        btnRegister.classList.add("btn-outline-own");
+        navbar.classList.remove("bg-transparent", "px-5", "py-3");
+        navbar.classList.add("bg-own", "px-4", "shadow-sm");
     } else {
-        navbar.classList.remove("bg-own", "px-4", "shadow-sm", "navbar-own");
-        navbar.classList.add(
-            "bg-transparent",
-            "px-5",
-            "py-3",
-            "navbar-own-dark"
-        );
-
-        btnLOgin.classList.remove("btn-outline-own");
-        btnLOgin.classList.add("btn-outline-own-2");
-        btnRegister.classList.remove("btn-outline-own");
-        btnRegister.classList.add("btn-outline-own-2");
+        navbar.classList.remove("bg-own", "px-4", "shadow-sm");
+        navbar.classList.add("bg-transparent", "px-5", "py-3");
     }
 }
 
@@ -45,3 +26,19 @@ window.onload = function (event) {
 
     handleNavbar(scroll);
 };
+
+for (let i = 0; i < links.length; i++) {
+    const link = links[i];
+
+    link.addEventListener("click", function (e) {
+        e.preventDefault();
+        var section = document.getElementById(
+            link.getAttribute("href").replace("#", "")
+        );
+
+        window.scrollTo({
+            top: section.offsetTop,
+            behavior: "smooth",
+        });
+    });
+}
