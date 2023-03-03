@@ -11,7 +11,7 @@
 </div>
 <hr class="mb-3">
 <div class="d-flex justify-content-center px-5 mb-3">
-    <img src="{{ asset('storage/'. $berita->image) }}" alt="{{ $berita->header }}" class="img-fluid w-50">
+    <img src="/files/{{ $berita->image }}" alt="{{ $berita->header }}" class="img-fluid w-50">
 </div>
 <div class="mb-3">
     {!! $berita->body !!}

@@ -81,7 +81,7 @@
         <section id="profil" class="min-vh-100 bg-own-green scroll-targets">
             <div class="my-4 mx-3 p-5 row">
                 <div class="col-sm-5 text-center">
-                    <img src="@if($pimpinan) {{ asset('storage/'. $pimpinan->image) }} @else /image/no-user.jpg @endif" alt="{{ $pimpinan->nama??'' }}" class="img-fluid" style="width: 25vw;">
+                    <img src="@if($pimpinan) /files/{{ $pimpinan->image }} @else /image/no-user.jpg @endif" alt="{{ $pimpinan->nama??'' }}" class="img-fluid" style="width: 25vw;">
                     <h3 class="text-white fw-bolder mt-2">{{ $pimpinan->nama??'' }}</h3>
                     <h5 class="text-white fw-bolder mt-1">{{ $pimpinan->gol ??''}} / {{ $pimpinan->jabatan??'' }}</h5>
                     <h6 class="text-white fw-bolder mt-1">Nip. {{ $pimpinan->nip??'' }}</h6>
@@ -96,7 +96,7 @@
                             @php $i = 0; @endphp
                             @foreach($profil as $pr)
                             <div class="carousel-item @if($i == 0) active @endif">
-                                <img src="{{ asset('storage/'. $pr->image) }}" class="d-block w-100" alt="{{ $pr->header }}">
+                                <img src="/files/{{ $pr->image }}" class="d-block w-100" alt="{{ $pr->header }}">
                                 <div class="carousel-caption d-none d-md-block rounded" style="background-color: rgba(0, 0, 0, 0.7);">
                                     <h5>{{ $pr->header }}</h5>
                                     <p>{{ \Illuminate\Support\Str::limit(strip_tags($pr->body), 100) }}</p>
@@ -126,7 +126,7 @@
                 @foreach($pengumuman as $pr)
                 <div class="col-sm-3">
                     <div class="card">
-                        <img src="{{ asset('storage/'. $pr->image) }}" class="card-img-left" alt="{{ $pr->header }}">
+                        <img src="/files/{{ $pr->image }}" class="card-img-left" alt="{{ $pr->header }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $pr->header }}</h5>
                             <p class="card-text">{{ \Illuminate\Support\Str::limit(strip_tags($pr->body), 50) }}</p>

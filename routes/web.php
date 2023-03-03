@@ -3,11 +3,11 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
-use App\Http\Controllers\BataliyonController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\DistribusiBarangController;
 use App\Http\Controllers\DownloadFileController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\FileHandleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\ItemStockController;
@@ -30,6 +30,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/files/{target}/{image}', [FileHandleController::class, 'index']);
 
 Route::get('/download/{id}', [DownloadFileController::class, 'index']);
 

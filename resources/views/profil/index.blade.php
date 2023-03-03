@@ -32,7 +32,7 @@
     <div class="col-sm-4">
         <div class="d-flex flex-column align-items-center">
             @if($employee && $employee->image != null)
-            <img src="{{ asset('storage/'.$employee->image) }}" alt="Foto User" class="w-75 img-fluid rounded mb-2">
+            <img src="/files/{{ $employee->image }}" alt="Foto User" class="w-75 img-fluid rounded mb-2">
             @else
             <img src="/images/no-user.jpg" alt="Foto User" class="w-75 img-fluid rounded mb-2">
             @endif

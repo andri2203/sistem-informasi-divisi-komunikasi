@@ -13,7 +13,7 @@ class Profil extends Controller
     public function index()
     {
         $employee = Employee::find(auth()->user()->id_pegawai);
-        $divisi = Divition::where('role', auth()->user()->role)->get();
+        $divisi = auth()->user()->role==1? Divition::get() : Divition::where('role', auth()->user()->role)->get();
 
         $data = [
             'employee' => $employee,
