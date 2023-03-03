@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
-// Route tampil gambar
+// Route tampil gambar. Fitur Storage link tidak dipakai
 Route::get('/files/{target}/{image}', [FileHandleController::class, 'index']);
 
 Route::get('/download/{id}', [DownloadFileController::class, 'index']);
