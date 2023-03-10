@@ -34,7 +34,7 @@
         <div class="row mb-3 pe-2">
             <div class="col-sm-12 text-center">
                 @if($employee && $employee->image != null)
-                <img src="{{ asset('storage/'.$employee->image) }}" alt="Foto User" class=" img-fluid rounded mb-2" style="width: 60%;">
+                <img src="/files/{{ $employee->image }}" alt="Foto User" class=" img-fluid rounded mb-2" style="width: 60%;">
                 @else
                 <img src="/images/no-user.jpg" alt="Foto User" class=" img-fluid rounded mb-2" style="width: 60%;">
                 @endif

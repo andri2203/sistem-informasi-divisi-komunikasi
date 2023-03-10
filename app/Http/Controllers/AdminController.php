@@ -76,6 +76,7 @@ class AdminController extends Controller
     public function barangMasuk($id = null)
     {
         $items = ItemModel::get();
+        $divisi = Divition::get();
         $distribusiBarang = null;
 
         if ($id != null) {
@@ -91,6 +92,7 @@ class AdminController extends Controller
         $data = [
             'id_distribusi_barang' => $id,
             'items' => $items,
+            'divisi' => $divisi,
             'distribusiBarang' => $distribusiBarang
         ];
 

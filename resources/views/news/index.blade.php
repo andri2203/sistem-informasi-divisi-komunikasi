@@ -60,7 +60,7 @@
             <input type="file" name="image" id="image" class="form-control" onchange="imagePreview()">
         </div>
         <div class="col-sm-4">
-            <img class="image-priview img-fluid" @if($id_berita) src="{{ asset('storage/'. $news->image) }}" @endif>
+            <img class="image-priview img-fluid" @if($id_berita) src="/files/{{ $news->image }}" @endif>
         </div>
     </div>
 

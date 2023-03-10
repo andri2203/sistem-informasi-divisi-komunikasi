@@ -9,7 +9,7 @@
     <div class="col-sm-10 p-0 bg-white shadow-sm h-auto mb-3">
         <div class="row">
             <div class="col-sm-3">
-                <img src="{{ asset('storage/'. $berita->image) }}" alt="{{ $berita->header }}" class="img-fluid" style="background-size: auto;">
+                <img src="/files/{{ $berita->image }}" alt="{{ $berita->header }}" class="img-fluid" style="background-size: auto;">
             </div>
             <div class="col-sm-9 py-2">
                 <h6 class="fw-bolder mb-1">{{ $berita->header }}</h6>
