@@ -31,7 +31,7 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="periode" class="form-label fw-bolder">Divisi</label>
+                <label for="periode" class="form-label fw-bolder">Periode</label>
                 <input type="month" name="periode" id="periode" class="form-control" value="{{ date('Y-m') }}" required>
                 @error('periode')
                 <div class="invalid-feedback">{{ $messege }}</div>

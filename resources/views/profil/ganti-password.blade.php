@@ -33,19 +33,19 @@
         <form action="/admin/ganti-password" method="post">
             @csrf
             <div class="row g-3 mb-3 align-items-center">
-                <label for="passwordLama" class="col-sm-1 col-form-label">Password Lama</label>
+                <label for="passwordLama" class="col-sm-2 col-form-label">Password Lama</label>
                 <div class="col-sm-3">
                     <input type="password" name="passwordLama" id="passwordLama" class="form-control">
                 </div>
             </div>
             <div class="row g-3 mb-3 align-items-center">
-                <label for="passwordBaru" class="col-sm-1 col-form-label">Password Baru</label>
+                <label for="passwordBaru" class="col-sm-2 col-form-label">Password Baru</label>
                 <div class="col-sm-3">
                     <input type="password" name="passwordBaru" id="passwordBaru" class="form-control">
                 </div>
             </div>
             <div class="row g-3 mb-3 align-items-center">
-                <label for="konfirmasiPassword" class="col-sm-1 col-form-label">Password Lama</label>
+                <label for="konfirmasiPassword" class="col-sm-2 col-form-label">Konfirmasi Password</label>
                 <div class="col-sm-3">
                     <input type="password" name="konfirmasiPassword" id="konfirmasiPassword" class="form-control">
                 </div>
