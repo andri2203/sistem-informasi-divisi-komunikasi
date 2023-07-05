@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Models\Employee;
 
 class isAdmin
 {
@@ -16,7 +17,9 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->role != 1) {
+        $employee = Employee::find(auth()->user()->id_pegawai);
+
+        if (auth()->user()->role != 1 && $employee->pimpinan != 1) {
             return redirect("/");
         }
 

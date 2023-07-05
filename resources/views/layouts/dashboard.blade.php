@@ -37,7 +37,11 @@
                     </ul>
                 </li>
 
-                @if(auth()->user()->role == 1)
+                @php
+                $employee = App\Models\Employee::find(auth()->user()->id_pegawai);
+                @endphp
+
+                @if(auth()->user()->role == 1 || $employee->pimpinan == 1)
                 @include('sidebar.sidebar-admin')
                 @else
                 @include('sidebar.sidebar-user')
